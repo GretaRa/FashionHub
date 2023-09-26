@@ -1,8 +1,14 @@
-# React + Vite
+Requirements:
+* At least two pages (a home page and a shop page, which includes your shopping cart)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* Let the user navigate between the pages with a navigation bar, which will be shown on both pages.
 
-Currently, two official plugins are available:
+* On the shopping cart page, you should have the same navigation bar that displays the number of items currently in the cart.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* You should also have a button next to it where you can go to the cart to checkout and pay
+
+* Build individual card elements for each of your products. Display an input field on it, which lets a user manually type in how many items they want to buy. Also, add an increment and decrement button next to it for fine-tuning. You can also display a title for each product as well as an “Add To Cart” button.
+
+* Once a user has submitted their order, the amount on the cart itself should adjust accordingly.
+
+* Make sure to test your app thoroughly using the React Testing Library.
