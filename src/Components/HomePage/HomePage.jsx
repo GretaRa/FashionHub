@@ -1,11 +1,12 @@
 import Navbar from "../Navbar/Navbar"
 
-function Homepage(){
+function HomePage(){
     return(
       <>
         <Navbar/>
+        <h1>Home</h1>
       </>
     )
 }
 
-export default Homepage;
+export default HomePage;
