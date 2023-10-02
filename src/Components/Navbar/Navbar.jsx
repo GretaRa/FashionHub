@@ -18,10 +18,10 @@ function Navbar() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="shop">Shop</Link>
+              <Link to="/shop">Shop</Link>
             </li>
             <li>
-              <Link to="cart">
+              <Link to="/cart">
               <div className="flex justify-center items-center">
                   <div className="relative ">
                 {count === 0 ? null : (
