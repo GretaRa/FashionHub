@@ -1,15 +1,15 @@
 import Navbar from "../Navbar/Navbar"
+import NavigationBar from "../Navbar/NavigationBar";
+import HeroSection from "./HeroSection";
+import ProductCategories from "./ProductCategories";
 
 
 function HomePage(){
   return(
     <>
-      <Navbar/>
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-3xl font-bold text-center">
-          <h1>Welcome to the Home Page</h1>
-        </div>
-      </div>
+      <NavigationBar/>
+      <HeroSection/>
+      <ProductCategories/>
     </>
   );
 }

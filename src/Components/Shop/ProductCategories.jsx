@@ -1,13 +1,14 @@
 import Navbar from "../Navbar/Navbar";
 import { useState, useEffect } from "react";
+import Category from "./Category";
 
-function ShopPage() {
-  const [data, setData] = useState(null);
+function ProductCategories() {
+  const [category, setCategory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
+    fetch('https://fakestoreapi.com/products/categories')
       .then((res) => {
         if (!res.ok) {
           throw new Error(
@@ -16,42 +17,31 @@ function ShopPage() {
         }
         return res.json();
       })
-      .then((actualData) => {
-        setData(actualData);
-        setError(null);
-      })
+      .then((res) => setCategory(res))
       .catch((err) => {
         setError(err.message);
-        setData(null);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
 
-    return(
+    return (
       <>
         <Navbar/>
-        <h1>Shop</h1>
-        
         {loading && <div>A moment please...</div>}
         {error && (
         <div>{`There is a problem fetching the post data - ${error}`}</div>
       )}
         <div>
-          <div className=" grid grid-cols-4 gap-10">
-            {data &&
-              data.map(({ id, title ,image, price, description }) => (
-                <div key={id} className="p-2 border-black border-2"> 
-                  <img src={image} alt="product image" className="w-60 h-56 object-contain"/>
-                  <h3>{title}</h3>
-                  <p>{price} €</p>
-                </div>
-            ))}
-          </div>
+        {category && category.map((cat) => (
+          <Category key={cat} name={cat} />
+        ))}
         </div>
       </>
     );
-}
+};
 
-export default ShopPage;
+export default ProductCategories;
+
+// Click cat ->  fetch link of that category? dynamically? 

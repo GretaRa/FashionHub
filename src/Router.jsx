@@ -3,7 +3,6 @@ import App from "./App";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import ShopPage from "./Components/Shop/ShopPage.jsx";
 
-
 const Router = () => {
   const BrowserRouter = createBrowserRouter([
     {
