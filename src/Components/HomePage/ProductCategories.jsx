@@ -28,7 +28,7 @@ const ProductCategories = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((category, index) => (
             <div key={index} className="group relative bg-white p-4 shadow-md rounded-md overflow-hidden">
-              <img src={`path/to/your-category-images/${category}.jpg`} alt={category} className="w-full h-40 object-cover" />
+              <img src={category} alt={category} className="w-full h-40 object-cover" />
               <p className="text-lg font-semibold text-gray-800 mt-2 group-hover:text-orange-500 transition-colors duration-300">
                 {category}
               </p>
