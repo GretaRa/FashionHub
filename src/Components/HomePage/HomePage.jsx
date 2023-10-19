@@ -7,10 +7,12 @@ import ProductCategories from "./ProductCategories";
 function HomePage(){
   return(
     <>
-      <NavigationBar/>
+    <NavigationBar/>
+    <div className="min-h-screen flex flex-col">
       <HeroSection/>
       <ProductCategories/>
-      <Footer/>
+    </div>
+    <Footer/>
     </>
   );
 }
