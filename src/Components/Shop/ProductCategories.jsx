@@ -1,14 +1,15 @@
 import Navbar from "../Navbar/Navbar";
 import { useState, useEffect } from "react";
-import Category from "./Category";
+import ProductDisplay from "./ProductDisplay";
 
 function ProductCategories() {
-  const [category, setCategory] = useState(null);
+  const [products, setProducts] = useState(null);
+  const [categoryName, setCategoryName] = useState('jewelery');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/categories')
+    fetch('https://fakestoreapi.com/products/category/${categoryName}')
       .then((res) => {
         if (!res.ok) {
           throw new Error(
@@ -17,7 +18,7 @@ function ProductCategories() {
         }
         return res.json();
       })
-      .then((res) => setCategory(res))
+      .then((res) => setProducts(res))
       .catch((err) => {
         setError(err.message);
       })
@@ -34,9 +35,7 @@ function ProductCategories() {
         <div>{`There is a problem fetching the post data - ${error}`}</div>
       )}
         <div>
-        {category && category.map((cat) => (
-          <Category key={cat} name={cat} />
-        ))}
+          <ProductDisplay products={products} />
         </div>
       </>
     );
