@@ -42,5 +42,3 @@ function ProductCategories() {
 };
 
 export default ProductCategories;
-
-// Click cat ->  fetch link of that category? dynamically? 

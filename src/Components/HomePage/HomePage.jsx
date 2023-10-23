@@ -1,7 +1,7 @@
 import Footer from "../Footer";
 import NavigationBar from "../Navbar/NavigationBar";
 import HeroSection from "./HeroSection";
-import ProductCategories from "./ProductCategories";
+import HomeCategories from "./HomeCategories";
 
 
 function HomePage(){
@@ -10,7 +10,7 @@ function HomePage(){
     <NavigationBar/>
     <div className="min-h-screen flex flex-col">
       <HeroSection/>
-      <ProductCategories/>
+      <HomeCategories/>
     </div>
     <Footer/>
     </>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const ProductCategories = () => {
+const HomeCategories = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
 
@@ -30,7 +31,7 @@ const ProductCategories = () => {
               {categories.map((category, index) => (
                 <div key={index} className=" bg-white p-4 shadow-md rounded-md overflow-hidden flex items-center justify-center">
                   <p className="text-lg font-semibold text-gray-800 mt-2 hover:text-orange-500 transition-colors duration-300 cursor-pointer">
-                    {category.toUpperCase()}
+                    {<Link state={{ category: category }} to={`/shop/${category}`} >{category.toUpperCase()}</Link>}
                   </p>
                 </div>
               ))}
@@ -42,4 +43,4 @@ const ProductCategories = () => {
   );
 };
 
-export default ProductCategories;
+export default HomeCategories;

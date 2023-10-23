@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
-import ShopPage2 from "./Components/Shop/ShopPage2.jsx";
+import ShopPage from "./Components/Shop/ShopPage.jsx";
 import ContactUsPage from "./Components/Contact";
 
 const Router = () => {
@@ -12,8 +12,8 @@ const Router = () => {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/shop",
-      element: <ShopPage2 />,
+      path: "/shop/:categoryName",
+      element: <ShopPage />,
       errorElement: <ErrorPage />,
     },
     {
