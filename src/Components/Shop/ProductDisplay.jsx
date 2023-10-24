@@ -1,10 +1,6 @@
 import StarRatings from 'react-star-ratings';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
 const ProductDisplay = ({ products }) => {
-
-
 
   return (
     <>
