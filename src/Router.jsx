@@ -12,6 +12,11 @@ const Router = () => {
       errorElement: <ErrorPage />,
     },
     {
+      path: "/shop",
+      element: <ShopPage />,
+      errorElement: <ErrorPage />,
+    },
+    {
       path: "/shop/:category",
       element: <ShopPage />,
       errorElement: <ErrorPage />,

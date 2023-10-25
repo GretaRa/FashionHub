@@ -1,7 +1,6 @@
 import NavigationBar from '../Navbar/NavigationBar';
 import Footer from '../Footer';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import ProductDisplay from './ProductDisplay';
 import { useParams } from 'react-router-dom';
 
@@ -10,12 +9,8 @@ const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  // const location = useLocation()
-  // const { category } = location.state
 
   const {category} = useParams()
- 
   
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -28,11 +23,12 @@ const ShopPage = () => {
         return response.json();
       })
       .then((data) => {
-        category === 'all'
-          ? setProducts(data)
-          :
-        setProducts(data.filter((product) => product.category === category));
+        if (category === undefined){
+          setProducts(data);
+        } else{
+          setProducts(data.filter((product) => product.category === category));
         setError(null);
+        }
       })
       .catch((err) => {
         setError(err);
