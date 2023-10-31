@@ -26,7 +26,7 @@ const NavigationBar = () => {
           <Link to="/contact" className="text-gray-600 hover:text-gray-800">
             Contact
           </Link>
-          <Link to="/cart" className=" text-gray-600 hover:text-gray-800">
+          <Link to="/shopping-cart" className=" text-gray-600 hover:text-gray-800">
             <div className="flex justify-center items-center">
               <div className="relative ">
                 {count === 0 ? null : (

@@ -1,8 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
-import ShopPage from "./Components/Shop/ShopPage.jsx";
+import ShopPage from "./Components/Shop/ShopPage";
 import ContactUsPage from "./Components/Contact";
+import ShoppingCart from "./Components/Shop/ShoppingCart";
 
 const Router = () => {
   const BrowserRouter = createBrowserRouter([
@@ -24,6 +25,11 @@ const Router = () => {
     {
       path: "/contact",
       element: <ContactUsPage />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/shopping-cart",
+      element: <ShoppingCart />,
       errorElement: <ErrorPage />,
     },
   ]);
