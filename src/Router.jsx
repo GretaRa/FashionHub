@@ -4,6 +4,7 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import ShopPage from "./Components/Shop/ShopPage";
 import ContactUsPage from "./Components/Contact";
 import ShoppingCart from "./Components/Shop/ShoppingCart";
+import CartDisplay from "./Components/Shop/CartDisplay";
 
 const Router = () => {
   const BrowserRouter = createBrowserRouter([
@@ -29,7 +30,7 @@ const Router = () => {
     },
     {
       path: "/shopping-cart",
-      element: <ShoppingCart />,
+      element: <CartDisplay />,
       errorElement: <ErrorPage />,
     },
   ]);

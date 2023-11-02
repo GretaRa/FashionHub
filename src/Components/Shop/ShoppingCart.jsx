@@ -10,9 +10,9 @@ const ShoppingCart = () => {
   return ( 
     <>
       <NavigationBar />
-      <div className="min-h-screen">
+      <div className="fixed inset-y-0 right-0 w-64 bg-white shadow-lg z-50 p-4">
         <div className="container mx-auto">
-          <h2 className="text-xl font-bold mb-4">Your Shopping Cart</h2>
+          <h2 className="text-xl font-bold mb-4 my-4">Your Shopping Cart</h2>
         <ul>
           {cartItems.map((item) => {
             return (
@@ -36,7 +36,7 @@ const ShoppingCart = () => {
           })}
         </ul>
         <div className="">
-          total: 150 €
+          Total amount: 150 €
         </div>
         </div>
       </div>
