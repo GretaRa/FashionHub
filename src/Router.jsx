@@ -3,8 +3,8 @@ import App from "./App";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import ShopPage from "./Components/Shop/ShopPage";
 import ContactUsPage from "./Components/Contact";
-import ShoppingCart from "./Components/Shop/ShoppingCart";
 import CartDisplay from "./Components/Shop/CartDisplay";
+import HomePage from "./Components/HomePage/HomePage";
 
 const Router = () => {
   const BrowserRouter = createBrowserRouter([
@@ -12,30 +12,29 @@ const Router = () => {
       path: "/",
       element: <App />,
       errorElement: <ErrorPage />,
-    },
-    {
-      path: "/shop",
-      element: <ShopPage />,
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: "/shop/:category",
-      element: <ShopPage />,
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: "/contact",
-      element: <ContactUsPage />,
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: "/shopping-cart",
-      element: <CartDisplay />,
-      errorElement: <ErrorPage />,
+      children: [
+        { index: true, element: <HomePage /> },
+        {
+          path: "/shop",
+          element: <ShopPage />,
+        },
+        {
+          path: "/shop/:category",
+          element: <ShopPage />,
+        },
+        {
+          path: "/contact",
+          element: <ContactUsPage />,
+        },
+      ],
     },
   ]);
 
-  return <RouterProvider router={BrowserRouter} />;
+  return (
+    <RouterProvider router={BrowserRouter}>
+      <CartDisplay />
+    </RouterProvider>
+  );
 };
 
 export default Router;

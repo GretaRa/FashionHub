@@ -1,11 +1,8 @@
 import NavigationBar from "../Navbar/NavigationBar";
 import Footer from "../Footer";
 
-const ShoppingCart = () => {
-  const cartItems = [
-    { name: "necklace", price: 100, id: 1 },
-    { name: "earrings", price: 50, id: 2 },
-  ];
+const ShoppingCart = ({cartItems}) => {
+  
 
   return ( 
     <>

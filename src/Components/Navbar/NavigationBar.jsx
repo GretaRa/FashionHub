@@ -1,14 +1,19 @@
 import { FaCartShopping } from "react-icons/fa6";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import CartDisplay from "../Shop/CartDisplay";
 
-const NavigationBar = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [count, setCount] = useState(0);
+const NavigationBar = ({ cartItems, onRemoveItem, onClose }) => {
+  const [isCartOpen, setIsCartOpen] = useState();
+  const [cartItemCount, setCartItemCount] = useState(0);
 
-  // function handleCount() {
-  //   setCount(count + 1);
-  // }
+  const openCart = () => {
+    setIsCartOpen(true);
+  };
+
+  const closeCart = () => {
+    setIsCartOpen(false);
+  };
 
   return (
     <nav className="bg-white p-4 shadow-md">
@@ -26,20 +31,30 @@ const NavigationBar = () => {
           <Link to="/contact" className="text-gray-600 hover:text-gray-800">
             Contact
           </Link>
-          <Link to="/shopping-cart" className=" text-gray-600 hover:text-gray-800">
+          <button
+            onClick={openCart}
+            className=" text-gray-600 hover:text-gray-800"
+          >
             <div className="flex justify-center items-center">
               <div className="relative ">
-                {count === 0 ? null : (
+                {cartItemCount === 0 ? null : (
                   <div className="absolute top-0 right-0 -mt-1 -mr-1 w-4 h-4 bg-red-500 rounded-full flex justify-center items-center">
-                    <p className="text-white text-xs">{count}</p>
+                    <p className="text-white text-xs">{cartItemCount}</p>
                   </div>
                 )}
                 <FaCartShopping className="text-2xl" />
               </div>
             </div>
-          </Link>
+          </button>
         </div>
       </div>
+      {isCartOpen && (
+        <CartDisplay
+          cartItems={cartItems}
+          onRemoveItem={onRemoveItem}
+          onClose={closeCart}
+        />
+      )}
     </nav>
   );
 };
