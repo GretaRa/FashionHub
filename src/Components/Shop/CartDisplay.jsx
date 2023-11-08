@@ -1,6 +1,6 @@
 const CartDisplay = ({ cartItems, onRemoveItem, onClose }) => {
   const handleCloseCart = () => {
-    onClose(); // Call the onClose function to close the cart display
+    onClose();
   };
 
   

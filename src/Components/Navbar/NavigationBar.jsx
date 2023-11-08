@@ -3,7 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import CartDisplay from "../Shop/CartDisplay";
 
-const NavigationBar = ({ cartItems, onRemoveItem, onClose }) => {
+const NavigationBar = ({ cartItems, onRemoveItem, onAddItem }) => {
+  
   const [isCartOpen, setIsCartOpen] = useState();
 
   const cartItemCount = cartItems.length;
@@ -53,6 +54,7 @@ const NavigationBar = ({ cartItems, onRemoveItem, onClose }) => {
         <CartDisplay
           cartItems={cartItems}
           onRemoveItem={onRemoveItem}
+          onAddItem={onAddItem}
           onClose={closeCart}
         />
       )}
