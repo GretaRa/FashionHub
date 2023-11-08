@@ -2,6 +2,8 @@ const CartDisplay = ({ cartItems, onRemoveItem, onClose }) => {
   const handleCloseCart = () => {
     onClose(); // Call the onClose function to close the cart display
   };
+
+  
   
   return (
     <div className="fixed right-0 top-0 h-full w-64 bg-white shadow-lg z-50 p-4">

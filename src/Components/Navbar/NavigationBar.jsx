@@ -5,8 +5,9 @@ import CartDisplay from "../Shop/CartDisplay";
 
 const NavigationBar = ({ cartItems, onRemoveItem, onClose }) => {
   const [isCartOpen, setIsCartOpen] = useState();
-  const [cartItemCount, setCartItemCount] = useState(0);
 
+  const cartItemCount = cartItems.length;
+  
   const openCart = () => {
     setIsCartOpen(true);
   };
