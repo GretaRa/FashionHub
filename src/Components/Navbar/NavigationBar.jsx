@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import CartDisplay from "../Shop/CartDisplay";
 
 const NavigationBar = ({ cartItems, onRemoveItem, onAddItem }) => {
-  
   const [isCartOpen, setIsCartOpen] = useState();
 
   const cartItemCount = cartItems.length;
-  
+
   const openCart = () => {
     setIsCartOpen(true);
   };

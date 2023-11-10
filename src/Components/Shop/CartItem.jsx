@@ -1,6 +1,6 @@
 import QuantityButton from "./QuantityButton";
 
-const CartItem = ({item, onRemoveItem}) => {
+const CartItem = ({ item, onRemoveItem }) => {
   const [quantity, setQuantity] = useState(item.quantity);
 
   return (
@@ -18,7 +18,7 @@ const CartItem = ({item, onRemoveItem}) => {
           {item.price.toFixed(2)} €
         </div>
         <div className="col-span-2">
-          <QuantityButton/>
+          <QuantityButton />
           <input type="number" />
           <button
             className="text-red-600 hover:text-red-800"
@@ -29,7 +29,7 @@ const CartItem = ({item, onRemoveItem}) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default CartItem;

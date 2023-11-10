@@ -1,4 +1,3 @@
-
 const fetchData = (url) => {
   return fetch(url)
     .then((response) => {
@@ -8,7 +7,7 @@ const fetchData = (url) => {
       return response.json();
     })
     .catch((error) => {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
       throw error;
     });
 };

@@ -12,7 +12,7 @@ const ShopPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(category);
   const productUrl = selectedCategory
     ? `https://fakestoreapi.com/products/category/${selectedCategory}`
-    : 'https://fakestoreapi.com/products';
+    : "https://fakestoreapi.com/products";
 
   useEffect(() => {
     setLoading(true);
@@ -27,25 +27,25 @@ const ShopPage = () => {
   return (
     <>
       <div className="container mx-auto py-8 min-h-screen flex flex-col">
-      <div className="mb-4">
-        <label className="text-gray-500">Select Category: </label>
-        <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          className="p-2 border border-gray-300 rounded"
-        >
-          <option value="">All</option>
-          <option value="electronics">Electronics</option>
-          <option value="jewelery">Jewelery</option>
-          <option value="men's clothing">Men's Clothing</option>
-          <option value="women's clothing">Women's Clothing</option>
-        </select>
+        <div className="mb-4">
+          <label className="text-gray-500">Select Category: </label>
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="p-2 border border-gray-300 rounded"
+          >
+            <option value="">All</option>
+            <option value="electronics">Electronics</option>
+            <option value="jewelery">Jewelery</option>
+            <option value="men's clothing">Men's Clothing</option>
+            <option value="women's clothing">Women's Clothing</option>
+          </select>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {loading ? <p>Loading...</p> : <ProductDisplay products={products} />}
+          {error && <p>Oops, something went wrong. Please try again later.</p>}
+        </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {loading ? <p>Loading...</p> : <ProductDisplay products={products} />}
-        {error && <p>Oops, something went wrong. Please try again later.</p>}
-      </div>
-    </div>
     </>
   );
 };

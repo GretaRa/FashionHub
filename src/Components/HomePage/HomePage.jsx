@@ -1,15 +1,13 @@
-
 import HeroSection from "./HeroSection";
 import HomeCategories from "./HomeCategories";
 
-
-function HomePage(){
-  return(
+function HomePage() {
+  return (
     <>
-    <div className="min-h-screen flex flex-col">
-      <HeroSection/>
-      <HomeCategories/>
-    </div>
+      <div className="min-h-screen flex flex-col">
+        <HeroSection />
+        <HomeCategories />
+      </div>
     </>
   );
 }
