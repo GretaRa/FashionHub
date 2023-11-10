@@ -24,7 +24,7 @@ const HomeCategories = () => {
               {categories.map((category, index) => (
                 <div key={index} className=" bg-white p-4 shadow-md rounded-md overflow-hidden flex items-center justify-center">
                   <p className="text-lg font-semibold text-gray-800 mt-2 hover:text-orange-500 transition-colors duration-300 cursor-pointer">
-                    {<Link state={{ category: category }} to={`/shop/${category}`} >{category.toUpperCase()}</Link>}
+                    {<Link state={{ selectedCategory: category }} to={`/shop/${category}`} >{category.toUpperCase()}</Link>}
                   </p>
                 </div>
               ))}

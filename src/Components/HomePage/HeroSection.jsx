@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import fetchData from '../API/Api';
 
 const HeroSection = () => {
   const [loading, setLoading] = useState(true);
@@ -7,27 +8,15 @@ const HeroSection = () => {
   const [imageurl, setImageurl] = useState(null);
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/1')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(
-            `This is an HTTP error: The status is ${res.status}`
-          );
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setError(null);
-        setImageurl(data.image);
-      })
-      .catch((err) => {
-        setError(err.message);
-        console.log(error)
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [error]);
+    setLoading(true);
+    setError(null);
+
+    const ImageUrl = 'https://fakestoreapi.com/products/1';
+    fetchData(ImageUrl)
+      .then((data) => setImageurl(data.image))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
 
