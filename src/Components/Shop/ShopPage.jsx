@@ -9,26 +9,44 @@ const ShopPage = () => {
   const [error, setError] = useState(null);
 
   const { category } = useParams();
+  const [selectedCategory, setSelectedCategory] = useState(category);
+  const productUrl = selectedCategory
+    ? `https://fakestoreapi.com/products/category/${selectedCategory}`
+    : 'https://fakestoreapi.com/products';
 
   useEffect(() => {
     setLoading(true);
     setError(null);
 
-    fetchItems(category)
+    fetchItems(productUrl)
       .then((data) => setProducts(data))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-  }, [category]);
+  }, [productUrl]);
 
   return (
     <>
       <div className="container mx-auto py-8 min-h-screen flex flex-col">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {loading && <p>Loading...</p>}
-          {error && <p>Oops, something went wrong. Please try again later.</p>}
-          <ProductDisplay products={products} />
-        </div>
+      <div className="mb-4">
+        <label className="text-gray-500">Select Category: </label>
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className="p-2 border border-gray-300 rounded"
+        >
+          <option value="">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="jewelery">Jewelery</option>
+          <option value="men's%20clothing">Men's Clothing</option>
+          <option value="women's%20clothing">Women's Clothing</option>
+        </select>
       </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {loading && <p>Loading...</p>}
+        {error && <p>Oops, something went wrong. Please try again later.</p>}
+        <ProductDisplay products={products} />
+      </div>
+    </div>
     </>
   );
 };

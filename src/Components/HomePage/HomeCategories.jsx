@@ -1,25 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import fetchData from '../API/Api';
 
 const HomeCategories = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/categories')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setCategories(data);
-        setError(null);
-      })
-      .catch(error => {
-        setError(error.message);
-      });
+    setError(null);
+
+    const categoryUrl = 'https://fakestoreapi.com/products/categories';
+    fetchData(categoryUrl)
+      .then((data) => setCategories(data))
+      .catch((error) => setError(error));
   }, []);
 
   return (

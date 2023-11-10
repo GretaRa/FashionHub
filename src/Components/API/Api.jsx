@@ -1,10 +1,6 @@
 
-const fetchItems = (category) => {
-  const apiUrl = category
-    ? `https://fakestoreapi.com/products/category/${category}`
-    : 'https://fakestoreapi.com/products';
-
-  return fetch(apiUrl)
+const fetchData = (url) => {
+  return fetch(url)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -12,9 +8,9 @@ const fetchItems = (category) => {
       return response.json();
     })
     .catch((error) => {
-      console.error('Error fetching products:', error);
-      throw error; // Re-throw the error for the calling component to handle
+      console.error('Error fetching data:', error);
+      throw error;
     });
 };
 
-export default fetchItems;
+export default fetchData;
