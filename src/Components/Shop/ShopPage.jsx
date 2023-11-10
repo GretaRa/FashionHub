@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { useParams } from "react-router-dom";
+import fetchItems from "../API/Api";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
@@ -10,29 +11,13 @@ const ShopPage = () => {
   const { category } = useParams();
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            `This is an HTTP error: The status is ${response.status}`,
-          );
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (category === undefined) {
-          setProducts(data);
-        } else {
-          setProducts(data.filter((product) => product.category === category));
-          setError(null);
-        }
-      })
-      .catch((err) => {
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    setLoading(true);
+    setError(null);
+
+    fetchItems(category)
+      .then((data) => setProducts(data))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
   }, [category]);
 
   return (
