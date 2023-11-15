@@ -21,9 +21,9 @@ const CartDisplay = ({ cartItems, onRemoveItem, onClose }) => {
         <p>Your cart is empty.</p>
       ) : (
         <ul className="flex flex-col gap-10">
-          {cartItems.map((item) => (
-            <li key={item.id}>
-              <CartItem item={item} onRemoveItem={onRemoveItem} />
+          {cartItems.map((product) => (
+            <li key={product.id}>
+              <CartItem product={product} onRemoveItem={onRemoveItem} />
             </li>
           ))}
         </ul>

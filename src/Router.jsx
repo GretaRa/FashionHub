@@ -3,7 +3,7 @@ import App from "./App";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import ShopPage from "./Components/Shop/ShopPage";
 import ContactUsPage from "./Components/Contact";
-import CartDisplay from "./Components/Shop/CartDisplay";
+import CartDisplay from "./Components/Cart/CartDisplay";
 import HomePage from "./Components/HomePage/HomePage";
 
 const Router = () => {

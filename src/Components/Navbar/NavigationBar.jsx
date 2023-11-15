@@ -1,7 +1,7 @@
 import { FaCartShopping } from "react-icons/fa6";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import CartDisplay from "../Shop/CartDisplay";
+import CartDisplay from "../Cart/CartDisplay";
 
 const NavigationBar = ({ cartItems, onRemoveItem, onAddItem }) => {
   const [isCartOpen, setIsCartOpen] = useState();

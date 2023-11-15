@@ -1,4 +1,5 @@
 const QuantityButton = ({ quantity, onIncrease, onDecrease }) => {
+  
   return (
     <div className="flex items-center space-x-2">
       <button
