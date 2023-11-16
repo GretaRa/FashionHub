@@ -1,5 +1,6 @@
 import QuantityButton from "./QuantityButton";
 import { useState } from "react";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const CartItem = ({ product, onRemoveItem }) => {
   // const [quantity, setQuantity] = useState(product.quantity);
@@ -20,7 +21,7 @@ const CartItem = ({ product, onRemoveItem }) => {
     <div className="grid grid-cols-[25%_1fr] gap-5">
       <div className="relative overflow-hidden w-full">
         <img
-          className=" absolute"
+          className=" w-full h-24 object-contain"
           src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
           alt={product.name}
         />
@@ -36,12 +37,11 @@ const CartItem = ({ product, onRemoveItem }) => {
             onIncrease={handleIncrease}
             onDecrease={handleDecrease}
           /> */}
-          <input type="number" />
           <button
-            className="text-red-600 hover:text-red-800"
+            className="text-red-600 hover:text-red-800 text-xl"
             onClick={() => onRemoveItem(product.id)}
           >
-            Remove
+            <FaRegTrashCan />
           </button>
         </div>
       </div>
