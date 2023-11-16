@@ -31,12 +31,12 @@ const CartItem = ({ product, onRemoveItem }) => {
         <div className="col-start-2 col-end-2 text-gray-600">
           {product.price.toFixed(2)} €
         </div>
-        <div className="col-span-2">
-          {/* <QuantityButton
-            quantity={quantity}
-            onIncrease={handleIncrease}
-            onDecrease={handleDecrease}
-          /> */}
+        <div className="col-span-2 flex gap-2">
+          <QuantityButton
+            // quantity={quantity}
+            // onIncrease={handleIncrease}
+            // onDecrease={handleDecrease}
+          />
           <button
             className="text-red-600 hover:text-red-800 text-xl"
             onClick={() => onRemoveItem(product.id)}
