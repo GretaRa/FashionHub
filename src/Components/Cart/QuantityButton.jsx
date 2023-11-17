@@ -25,7 +25,7 @@ const QuantityButton = () => {
       >
         <FaMinus />
       </button>
-      <input className="text-xl w-4 font-semibold text-center" value={quantity}></input>
+      <input className="text-lg w-4 text-center bg-inherit" value={quantity}></input>
       <button
         onClick={onIncrease}
         className="bg-gray-300 hover:bg-gray-400 text-gray-600 px-2 py-2 rounded"
