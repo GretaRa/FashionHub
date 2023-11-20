@@ -1,11 +1,11 @@
 import { FaRectangleXmark } from "react-icons/fa6";
 import CartItem from "./CartItem";
+import { useContext } from "react";
+import { ShopContext } from "../../App";
 
-const CartDisplay = ({ cartItems, onRemoveItem, onClose }) => {
+const CartDisplay = () => {
   
-  const handleCloseCart = () => {
-    onClose();
-  };
+  const { cartItems, handleCloseCart } = useContext(ShopContext);
 
   const CartItemSum = cartItems.map((product) => product.price).reduce((a, b) => a + b, 0);
 
@@ -26,7 +26,7 @@ const CartDisplay = ({ cartItems, onRemoveItem, onClose }) => {
         <ul className="flex flex-col gap-10">
           {cartItems.map((product) => (
             <li key={product.id}>
-              <CartItem product={product} onRemoveItem={onRemoveItem} />
+              <CartItem product={product} />
             </li>
           ))}
         </ul>

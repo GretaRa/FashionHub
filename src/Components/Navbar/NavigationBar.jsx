@@ -1,20 +1,13 @@
 import { FaCartShopping } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartDisplay from "../Cart/CartDisplay";
+import { ShopContext } from "../../App";
 
-const NavigationBar = ({ cartItems, onRemoveItem, onAddItem }) => {
-  const [isCartOpen, setIsCartOpen] = useState();
+const NavigationBar = () => {
 
+  const { cartItems, isCartOpen, handleOpenCart} = useContext(ShopContext);
   const cartItemCount = cartItems.length;
-
-  const openCart = () => {
-    setIsCartOpen(true);
-  };
-
-  const closeCart = () => {
-    setIsCartOpen(false);
-  };
 
   return (
     <nav className="bg-white p-4 shadow-md">
@@ -33,7 +26,7 @@ const NavigationBar = ({ cartItems, onRemoveItem, onAddItem }) => {
             Contact
           </Link>
           <button
-            onClick={openCart}
+            onClick={handleOpenCart}
             className=" text-gray-600 hover:text-gray-800"
           >
             <div className="flex justify-center items-center">
@@ -50,12 +43,7 @@ const NavigationBar = ({ cartItems, onRemoveItem, onAddItem }) => {
         </div>
       </div>
       {isCartOpen && (
-        <CartDisplay
-          cartItems={cartItems}
-          onRemoveItem={onRemoveItem}
-          onAddItem={onAddItem}
-          onClose={closeCart}
-        />
+        <CartDisplay/>
       )}
     </nav>
   );

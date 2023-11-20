@@ -1,8 +1,11 @@
 import QuantityButton from "./QuantityButton";
-import { useState } from "react";
+import { useContext } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
+import { ShopContext } from "../../App";
 
-const CartItem = ({ product, onRemoveItem }) => {
+const CartItem = ({ product }) => {
+
+  const {handleRemoveItem} = useContext(ShopContext);
   // const [quantity, setQuantity] = useState(product.quantity);
 
   // const handleIncrease = () => {
@@ -39,7 +42,7 @@ const CartItem = ({ product, onRemoveItem }) => {
           />
           <button
             className="text-red-600 hover:text-red-800 text-xl"
-            onClick={() => onRemoveItem(product.id)}
+            onClick={() => handleRemoveItem(product.id)}
           >
             <FaRegTrashCan />
           </button>

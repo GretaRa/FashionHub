@@ -1,9 +1,21 @@
 import NavigationBar from "./Components/Navbar/NavigationBar";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import Footer from "./Components/Footer";
 import { Outlet } from "react-router-dom";
 
-function App() {
+export const ShopContext = createContext({
+  product: {},
+  cartItems: [],
+  addToCart: () => {},
+  openCart: () => {},
+  handleCloseCart: () => {},
+  handleRemoveItem: () => {},
+  handleAddItem: () => {},
+  isCartOpen: false,
+  closeCart: () => {},
+});
+
+export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([
     { id: 1, name: "Item 1", price: 10.99 },
@@ -23,24 +35,17 @@ function App() {
     setIsCartOpen(false);
   };
 
-  const openCart = () => {
+  const handleOpenCart = () => {
     setIsCartOpen(true);
   };
 
   return (
+    <ShopContext.Provider value={{ cartItems, handleOpenCart, handleCloseCart, handleAddItem, handleRemoveItem, isCartOpen}}>
     <div>
-      <NavigationBar
-        cartItems={cartItems}
-        onRemoveItem={handleRemoveItem}
-        onAddItem={handleAddItem}
-        isCartOpen={isCartOpen}
-        openCart={openCart}
-        onClose={handleCloseCart}
-      />
+      <NavigationBar/>
       <Outlet />
       <Footer />
     </div>
+    </ShopContext.Provider>
   );
 }
-
-export default App;
