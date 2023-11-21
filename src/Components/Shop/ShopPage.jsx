@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { useParams } from "react-router-dom";
 import fetchItems from "../API/Api";
+import { ShopContext } from "../../App";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,7 @@ const ShopPage = () => {
   }, [productUrl]);
 
   return (
-    <>
+    <ShopContext.Provider value={{products}}>
       <div className="container mx-auto py-8 min-h-screen flex flex-col">
         <div className="mb-4">
           <label className="text-gray-500">Select Category: </label>
@@ -42,11 +43,11 @@ const ShopPage = () => {
           </select>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {loading ? <p>Loading...</p> : <ProductDisplay products={products} />}
+          {loading ? <p>Loading...</p> : <ProductDisplay />}
           {error && <p>Oops, something went wrong. Please try again later.</p>}
         </div>
       </div>
-    </>
+      </ShopContext.Provider>
   );
 };
 

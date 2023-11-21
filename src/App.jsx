@@ -4,7 +4,7 @@ import Footer from "./Components/Footer";
 import { Outlet } from "react-router-dom";
 
 export const ShopContext = createContext({
-  product: {},
+  products: [],
   cartItems: [],
   addToCart: () => {},
   openCart: () => {},
@@ -27,8 +27,8 @@ export default function App() {
     setCartItems(cartItems.filter((item) => item.id !== itemId));
   };
 
-  const handleAddItem = (item) => {
-    setCartItems([...cartItems, item]);
+  const handleAddItem = (product) => {
+    setCartItems([...cartItems, product]);
   };
 
   const handleCloseCart = () => {
