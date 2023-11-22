@@ -25,12 +25,12 @@ const CartItem = ({ product }) => {
       <div className="relative overflow-hidden w-full">
         <img
           className=" w-full h-24 object-contain"
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+          src={product.image}
           alt={product.name}
         />
       </div>
       <div className="grid grid-cols-[60%_1fr] gap-2">
-        <div className="col-start-1 col-end-1">{product.name}</div>
+        <div className="col-start-1 col-end-1">{product.title}</div>
         <div className="col-start-2 col-end-2 text-gray-600">
           {product.price.toFixed(2)} €
         </div>

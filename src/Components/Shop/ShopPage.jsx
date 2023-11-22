@@ -1,32 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { useParams } from "react-router-dom";
-import fetchItems from "../API/Api";
 import { ShopContext } from "../../App";
 
 const ShopPage = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const {loading, error} = useContext(ShopContext);
 
   const { category } = useParams();
   const [selectedCategory, setSelectedCategory] = useState(category);
-  const productUrl = selectedCategory
-    ? `https://fakestoreapi.com/products/category/${selectedCategory}`
-    : "https://fakestoreapi.com/products";
-
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-
-    fetchItems(productUrl)
-      .then((data) => setProducts(data))
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false));
-  }, [productUrl]);
 
   return (
-    <ShopContext.Provider value={{products}}>
+    <>
       <div className="container mx-auto py-8 min-h-screen flex flex-col">
         <div className="mb-4">
           <label className="text-gray-500">Select Category: </label>
@@ -47,7 +31,7 @@ const ShopPage = () => {
           {error && <p>Oops, something went wrong. Please try again later.</p>}
         </div>
       </div>
-      </ShopContext.Provider>
+      </>
   );
 };
 

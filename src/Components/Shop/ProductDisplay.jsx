@@ -7,7 +7,7 @@ const ProductDisplay = () => {
 
   return (
     <>
-      {products.map((product) => (
+      {products.map(product => (
         <div
           key={product.id}
           className="bg-white shadow-md p-4 rounded-md flex flex-col justify-between items-center gap-1"
