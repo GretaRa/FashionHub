@@ -18,7 +18,8 @@ export const ShopContext = createContext({
   closeCart: () => {},
   loading: false,
   error: null,
-  category: "",
+  selectedCategory: null,
+  handleCategoryChange: () => {},
 });
 
 export default function App() {
@@ -63,7 +64,7 @@ export default function App() {
   }, [productUrl]);
 
   return (
-    <ShopContext.Provider value={{category, products, cartItems, handleOpenCart, handleCloseCart, handleAddItem, handleRemoveItem, isCartOpen, error, loading}}>
+    <ShopContext.Provider value={{category, products, cartItems, handleOpenCart, handleCloseCart, handleAddItem, handleRemoveItem, isCartOpen, error, loading, selectedCategory}}>
     <div>
       <NavigationBar/>
       <Outlet />

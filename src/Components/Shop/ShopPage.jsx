@@ -4,10 +4,13 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../../App";
 
 const ShopPage = () => {
-  const {loading, error} = useContext(ShopContext);
+  const {loading, error, products, selectedCategory } = useContext(ShopContext);
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
-  const { category } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState(category);
+  const handleCategoryChange = (selectedCategory) => {
+    setFilteredProducts(products.filter((product) => product.category === selectedCategory));
+    console.log(filteredProducts);
+  }
 
   return (
     <>
@@ -16,7 +19,7 @@ const ShopPage = () => {
           <label className="text-gray-500">Select Category: </label>
           <select
             value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            onChange={(e) => handleCategoryChange(selectedCategory)}
             className="p-2 border border-gray-300 rounded"
           >
             <option value="">All</option>
@@ -27,7 +30,7 @@ const ShopPage = () => {
           </select>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {loading ? <p>Loading...</p> : <ProductDisplay />}
+          {loading ? <p>Loading...</p> : <ProductDisplay filteredProducts={filteredProducts} />}
           {error && <p>Oops, something went wrong. Please try again later.</p>}
         </div>
       </div>

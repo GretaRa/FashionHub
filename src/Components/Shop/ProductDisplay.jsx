@@ -2,12 +2,12 @@ import StarRatings from "react-star-ratings";
 import { useContext } from "react";
 import { ShopContext } from "../../App";
 
-const ProductDisplay = () => {
+const ProductDisplay = ({filteredProducts}) => {
   const {handleAddItem, products} = useContext(ShopContext);
 
   return (
     <>
-      {products.map(product => (
+      {filteredProducts.map(product => (
         <div
           key={product.id}
           className="bg-white shadow-md p-4 rounded-md flex flex-col justify-between items-center gap-1"

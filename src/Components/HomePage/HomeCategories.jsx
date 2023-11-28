@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import fetchData from "../API/Api";
+import { ShopContext } from "../../App";
 
 const HomeCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -30,12 +31,14 @@ const HomeCategories = () => {
               >
                 <p className="text-lg font-semibold text-gray-800 mt-2 hover:text-orange-500 transition-colors duration-300 cursor-pointer">
                   {
+                    <ShopContext.Provider value={category}>
                     <Link
                       state={{ selectedCategory: category }}
                       to={`/shop/${category}`}
                     >
                       {category.toUpperCase()}
                     </Link>
+                    </ShopContext.Provider>
                   }
                 </p>
               </div>
