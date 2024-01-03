@@ -1,25 +1,34 @@
 import { useState, useContext } from "react";
 import ProductDisplay from "./ProductDisplay";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { ShopContext } from "../../App";
 
 const ShopPage = () => {
-  const {loading, error, products, selectedCategory } = useContext(ShopContext);
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const {loading, error, category, setSelectedCategory } = useContext(ShopContext);
+  // const [filteredProducts, setFilteredProducts] = useState(products);
+  const [setCategory, setSetCategory] = useState(category);
 
-  const handleCategoryChange = (selectedCategory) => {
-    setFilteredProducts(products.filter((product) => product.category === selectedCategory));
-    console.log(filteredProducts);
+  // const handleCategoryChange = (selectedCategory) => {
+  //   setFilteredProducts(products.filter((product) => product.category === selectedCategory));
+  //   console.log(filteredProducts);
+  // }
+
+  const handleSelectedCategory = () =>{
+    (e) => setSetCategory(e.target.value)
+    setSelectedCategory(setCategory)
   }
+
+  console.log('setCategory shop', setCategory);
 
   return (
     <>
+    <ShopContext.Provider value={setCategory}>
       <div className="container mx-auto py-8 min-h-screen flex flex-col">
         <div className="mb-4">
           <label className="text-gray-500">Select Category: </label>
           <select
-            value={selectedCategory}
-            onChange={(e) => handleCategoryChange(selectedCategory)}
+            value={setCategory}
+            onChange={handleSelectedCategory}
             className="p-2 border border-gray-300 rounded"
           >
             <option value="">All</option>
@@ -30,10 +39,11 @@ const ShopPage = () => {
           </select>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {loading ? <p>Loading...</p> : <ProductDisplay filteredProducts={filteredProducts} />}
+          {loading ? <p>Loading...</p> : <ProductDisplay />}
           {error && <p>Oops, something went wrong. Please try again later.</p>}
         </div>
       </div>
+      </ShopContext.Provider>
       </>
   );
 };
