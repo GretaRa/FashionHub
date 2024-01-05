@@ -55,23 +55,27 @@ export default function App() {
     ? `https://fakestoreapi.com/products/category/${selectedCategory}`
     : "https://fakestoreapi.com/products";
 
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-
-    fetchData(productUrl)
-      .then((response) => {
-        setProducts(response);
-        console.log('data',products);
-      })
-      .then(console.log('selectedCategory fetch', selectedCategory))
-      .then(console.log(productUrl))
-      .then(console.log('fetch product',products))
-      .catch((error) => {
-        console.log('error',error);
-        setError(error)})
-      .finally(() => setLoading(false));
-  }, [productUrl]);
+    useEffect(() => {
+      setLoading(true);
+      setError(null);
+    
+      fetchData(productUrl)
+        .then((response) => {
+          console.log('API Response:', response); // Check the API response
+    
+          setProducts((prevProducts) => {
+            // Assuming response is an array of products
+            const updatedProducts = [...prevProducts, ...response]; // Merge the previous state with new data
+            console.log('Updated Products:', updatedProducts); // Check the updated state
+            return updatedProducts;
+          });
+        })
+        .catch((error) => {
+          setError(error);
+        })
+        .finally(() => setLoading(false));
+    }, [productUrl]);
+    
 
   return (
     <ShopContext.Provider value={{category, products, cartItems, handleOpenCart, handleCloseCart, handleAddItem, handleRemoveItem, isCartOpen, error, loading, setSelectedCategory}}>
