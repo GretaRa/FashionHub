@@ -1,9 +1,8 @@
 import StarRatings from "react-star-ratings";
-import { useContext } from "react";
-import { ShopContext } from "../../App";
+import { useShopContext } from "../../App";
 
 const ProductDisplay = () => {
-  const {handleAddItem, products} = useContext(ShopContext);
+  const {handleAddItem, products} = useShopContext();
   console.log('products:',products);
 
   return (

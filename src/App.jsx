@@ -1,5 +1,5 @@
 import NavigationBar from "./Components/Navbar/NavigationBar";
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 import Footer from "./Components/Footer";
 import { Outlet } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -22,6 +22,17 @@ export const ShopContext = createContext({
   handleCategoryChange: () => {},
   setSelectedCategory: () => {}
 });
+
+//Custom hook for context 
+export function useShopContext() {
+  const context = useContext(ShopContext);
+  if (!context){
+    throw new Error(
+      'useShopContext must be used within a ShopContextProvider'
+    );
+  }
+  return context;
+}
 
 export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -62,13 +73,7 @@ export default function App() {
       fetchData(productUrl)
         .then((response) => {
           console.log('API Response:', response); // Check the API response
-    
-          setProducts((prevProducts) => {
-            // Assuming response is an array of products
-            const updatedProducts = [...prevProducts, ...response]; // Merge the previous state with new data
-            console.log('Updated Products:', updatedProducts); // Check the updated state
-            return updatedProducts;
-          });
+          setProducts(response);
         })
         .catch((error) => {
           setError(error);
