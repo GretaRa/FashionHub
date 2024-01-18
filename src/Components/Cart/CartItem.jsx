@@ -1,11 +1,10 @@
 import QuantityButton from "./QuantityButton";
-import { useContext } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { ShopContext } from "../../App";
+import { useShopContext } from "../../App";
 
 const CartItem = ({ product }) => {
 
-  const {handleRemoveItem} = useContext(ShopContext);
+  const {handleRemoveItem} = useShopContext();
   // const [quantity, setQuantity] = useState(product.quantity);
 
   // const handleIncrease = () => {

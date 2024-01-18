@@ -1,12 +1,11 @@
 import { FaCartShopping } from "react-icons/fa6";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartDisplay from "../Cart/CartDisplay";
-import { ShopContext } from "../../App";
+import { useShopContext } from "../../App";
 
 const NavigationBar = () => {
 
-  const { cartItems, isCartOpen, handleOpenCart} = useContext(ShopContext);
+  const { cartItems, isCartOpen, handleOpenCart} = useShopContext();
   const cartItemCount = cartItems.length;
 
   return (

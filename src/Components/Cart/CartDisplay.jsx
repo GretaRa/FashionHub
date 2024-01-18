@@ -1,11 +1,10 @@
 import { FaRectangleXmark } from "react-icons/fa6";
 import CartItem from "./CartItem";
-import { useContext } from "react";
-import { ShopContext } from "../../App";
+import { useShopContext } from "../../App";
 
 const CartDisplay = () => {
   
-  const { cartItems, handleCloseCart } = useContext(ShopContext);
+  const { cartItems, handleCloseCart } = useShopContext();
 
   const CartItemSum = cartItems.map((product) => product.price).reduce((a, b) => a + b, 0);
 
