@@ -20,16 +20,14 @@ export const ShopContext = createContext({
   error: null,
   selectedCategory: null,
   handleCategoryChange: () => {},
-  setSelectedCategory: () => {}
+  setSelectedCategory: () => {},
 });
 
-//Custom hook for context 
+//Custom hook for context
 export function useShopContext() {
   const context = useContext(ShopContext);
-  if (!context){
-    throw new Error(
-      'useShopContext must be used within a ShopContextProvider'
-    );
+  if (!context) {
+    throw new Error("useShopContext must be used within a ShopContextProvider");
   }
   return context;
 }
@@ -43,7 +41,7 @@ export default function App() {
   };
 
   const handleAddItem = (item) => {
-    setCartItems([...cartItems,  item ]);
+    setCartItems([...cartItems, item]);
   };
 
   const handleCloseCart = () => {
@@ -55,7 +53,7 @@ export default function App() {
   };
 
   const [products, setProducts] = useState([]);
-  
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -66,28 +64,41 @@ export default function App() {
     ? `https://fakestoreapi.com/products/category/${selectedCategory}`
     : "https://fakestoreapi.com/products";
 
-    useEffect(() => {
-      setLoading(true);
-      setError(null);
-    
-      fetchData(productUrl)
-        .then((response) => {
-          setProducts(response);
-        })
-        .catch((error) => {
-          setError(error);
-        })
-        .finally(() => setLoading(false));
-    }, [productUrl]);
-    
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+
+    fetchData(productUrl)
+      .then((response) => {
+        setProducts(response);
+      })
+      .catch((error) => {
+        setError(error);
+      })
+      .finally(() => setLoading(false));
+  }, [productUrl]);
 
   return (
-    <ShopContext.Provider value={{category, products, cartItems, handleOpenCart, handleCloseCart, handleAddItem, handleRemoveItem, isCartOpen, error, loading, setSelectedCategory}}>
-    <div>
-      <NavigationBar/>
-      <Outlet />
-      <Footer />
-    </div>
+    <ShopContext.Provider
+      value={{
+        category,
+        products,
+        cartItems,
+        handleOpenCart,
+        handleCloseCart,
+        handleAddItem,
+        handleRemoveItem,
+        isCartOpen,
+        error,
+        loading,
+        setSelectedCategory,
+      }}
+    >
+      <div>
+        <NavigationBar />
+        <Outlet />
+        <Footer />
+      </div>
     </ShopContext.Provider>
   );
 }

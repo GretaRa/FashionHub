@@ -1,18 +1,19 @@
 import { useState } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { useShopContext } from "../../App";
-import { useEffect } from "react";
 
 const ShopPage = () => {
-  const {loading, error, setSelectedCategory, selectedCategory } = useShopContext()
+  const { loading, error, setSelectedCategory, selectedCategory } =
+    useShopContext();
 
-  const [selectedCategoryValue, setSelectedCategoryValue] = useState(selectedCategory);
+  const [selectedCategoryValue, setSelectedCategoryValue] =
+    useState(selectedCategory);
 
   const handleSelectedCategory = (e) => {
     const newValue = e.target.value;
     setSelectedCategoryValue(newValue);
     setSelectedCategory(newValue);
-  }
+  };
 
   return (
     <>
@@ -36,7 +37,7 @@ const ShopPage = () => {
           {error && <p>Oops, something went wrong. Please try again later.</p>}
         </div>
       </div>
-      </>
+    </>
   );
 };
 
