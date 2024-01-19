@@ -1,23 +1,18 @@
 import { useState } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { useShopContext } from "../../App";
+import { useEffect } from "react";
 
 const ShopPage = () => {
-  const {loading, error, category, setSelectedCategory } = useShopContext()
-  // const [filteredProducts, setFilteredProducts] = useState(products);
-  const [setCategory, setSetCategory] = useState(category);
+  const {loading, error, setSelectedCategory, selectedCategory } = useShopContext()
 
-  // const handleCategoryChange = (selectedCategory) => {
-  //   setFilteredProducts(products.filter((product) => product.category === selectedCategory));
-  //   console.log(filteredProducts);
-  // }
+  const [selectedCategoryValue, setSelectedCategoryValue] = useState(selectedCategory);
 
-  const handleSelectedCategory = () =>{
-    (e) => setSetCategory(e.target.value)
-    setSelectedCategory(setCategory)
+  const handleSelectedCategory = (e) => {
+    const newValue = e.target.value;
+    setSelectedCategoryValue(newValue);
+    setSelectedCategory(newValue);
   }
-
-  console.log('setCategory shop', setCategory);
 
   return (
     <>
@@ -25,15 +20,15 @@ const ShopPage = () => {
         <div className="mb-4">
           <label className="text-gray-500">Select Category: </label>
           <select
-            value={setCategory}
+            value={selectedCategoryValue}
             onChange={handleSelectedCategory}
             className="p-2 border border-gray-300 rounded"
           >
             <option value="">All</option>
             <option value="electronics">Electronics</option>
             <option value="jewelery">Jewelery</option>
-            <option value="men's clothing">Men's Clothing</option>
-            <option value="women's clothing">Women's Clothing</option>
+            <option value="men's clothing">Men&apos;s Clothing</option>
+            <option value="women's clothing">Women&apos;s Clothing</option>
           </select>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

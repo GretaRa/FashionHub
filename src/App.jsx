@@ -72,7 +72,6 @@ export default function App() {
     
       fetchData(productUrl)
         .then((response) => {
-          console.log('API Response:', response); // Check the API response
           setProducts(response);
         })
         .catch((error) => {
