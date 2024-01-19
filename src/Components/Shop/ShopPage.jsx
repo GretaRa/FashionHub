@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { useShopContext } from "../../App";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const ShopPage = () => {
   const { loading, error, setSelectedCategory, selectedCategory } =
@@ -17,11 +17,14 @@ const ShopPage = () => {
       setSelectedCategoryValue(category);
     }, [category, setSelectedCategory]);
   
+    const navigate = useNavigate();
 
   const handleSelectedCategory = (e) => {
     const newValue = e.target.value;
     setSelectedCategoryValue(newValue);
     setSelectedCategory(newValue);
+
+    navigate(`/shop/${newValue}`);
   };
 
   return (

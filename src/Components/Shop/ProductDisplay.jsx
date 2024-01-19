@@ -3,7 +3,6 @@ import { useShopContext } from "../../App";
 
 const ProductDisplay = () => {
   const {handleAddItem, products} = useShopContext();
-  console.log('products:',products);
 
   return (
     <>
