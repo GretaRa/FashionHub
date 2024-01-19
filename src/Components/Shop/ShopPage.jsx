@@ -10,14 +10,14 @@ const ShopPage = () => {
   const [selectedCategoryValue, setSelectedCategoryValue] =
     useState(selectedCategory);
 
-    const { category } = useParams();
+  const { category } = useParams();
 
-    useEffect(() => {
-      setSelectedCategory(category);
-      setSelectedCategoryValue(category);
-    }, [category, setSelectedCategory]);
-  
-    const navigate = useNavigate();
+  useEffect(() => {
+    setSelectedCategory(category);
+    setSelectedCategoryValue(category);
+  }, [category, setSelectedCategory]);
+
+  const navigate = useNavigate();
 
   const handleSelectedCategory = (e) => {
     const newValue = e.target.value;

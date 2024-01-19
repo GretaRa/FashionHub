@@ -3,10 +3,11 @@ import CartItem from "./CartItem";
 import { useShopContext } from "../../App";
 
 const CartDisplay = () => {
-  
   const { cartItems, handleCloseCart } = useShopContext();
 
-  const CartItemSum = cartItems.map((product) => product.price).reduce((a, b) => a + b, 0);
+  const CartItemSum = cartItems
+    .map((product) => product.price)
+    .reduce((a, b) => a + b, 0);
 
   return (
     <div className="fixed right-0 top-0 h-full w-96 bg-white shadow-lg z-50 p-4 border-l overflow-y-scroll">
@@ -34,17 +35,16 @@ const CartDisplay = () => {
         <div className="text-lg flex justify-between mt-4">
           <div>
             <p>Subtotal</p>
-            <p className="text-xs text-gray-600">Tax included. Shipping calculated at checkout.</p>
+            <p className="text-xs text-gray-600">
+              Tax included. Shipping calculated at checkout.
+            </p>
           </div>
           <p>{CartItemSum.toFixed(2)} €</p>
         </div>
-        <button
-          className="w-full bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600"
-        >
+        <button className="w-full bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600">
           Checkout
         </button>
       </div>
-      
     </div>
   );
 };

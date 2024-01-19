@@ -1,4 +1,4 @@
-import { FaMinus } from "react-icons/fa6"
+import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import { useState } from "react";
 
@@ -8,13 +8,13 @@ const QuantityButton = () => {
   const onIncrease = () => {
     if (quantity < 9) {
       setQuantity(quantity + 1);
-    };
+    }
   };
-  
+
   const onDecrease = () => {
     if (quantity > 1) {
-        setQuantity(quantity - 1);
-      };
+      setQuantity(quantity - 1);
+    }
   };
 
   return (
@@ -25,7 +25,11 @@ const QuantityButton = () => {
       >
         <FaMinus />
       </button>
-      <input readOnly className="text-lg w-4 text-center bg-inherit" value={quantity}></input>
+      <input
+        readOnly
+        className="text-lg w-4 text-center bg-inherit"
+        value={quantity}
+      ></input>
       <button
         onClick={onIncrease}
         className="bg-gray-300 hover:bg-gray-400 text-gray-600 px-2 py-2 rounded"

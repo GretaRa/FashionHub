@@ -4,8 +4,7 @@ import CartDisplay from "../Cart/CartDisplay";
 import { useShopContext } from "../../App";
 
 const NavigationBar = () => {
-
-  const { cartItems, isCartOpen, handleOpenCart} = useShopContext();
+  const { cartItems, isCartOpen, handleOpenCart } = useShopContext();
   const cartItemCount = cartItems.length;
 
   return (
@@ -41,9 +40,7 @@ const NavigationBar = () => {
           </button>
         </div>
       </div>
-      {isCartOpen && (
-        <CartDisplay/>
-      )}
+      {isCartOpen && <CartDisplay />}
     </nav>
   );
 };

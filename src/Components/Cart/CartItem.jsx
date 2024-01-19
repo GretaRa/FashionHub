@@ -3,8 +3,7 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { useShopContext } from "../../App";
 
 const CartItem = ({ product }) => {
-
-  const {handleRemoveItem} = useShopContext();
+  const { handleRemoveItem } = useShopContext();
   // const [quantity, setQuantity] = useState(product.quantity);
 
   // const handleIncrease = () => {
@@ -35,9 +34,9 @@ const CartItem = ({ product }) => {
         </div>
         <div className="col-span-2 flex gap-2">
           <QuantityButton
-            // quantity={quantity}
-            // onIncrease={handleIncrease}
-            // onDecrease={handleDecrease}
+          // quantity={quantity}
+          // onIncrease={handleIncrease}
+          // onDecrease={handleDecrease}
           />
           <button
             className="text-red-600 hover:text-red-800 text-xl"

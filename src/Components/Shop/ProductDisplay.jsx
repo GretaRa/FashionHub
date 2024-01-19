@@ -2,11 +2,11 @@ import StarRatings from "react-star-ratings";
 import { useShopContext } from "../../App";
 
 const ProductDisplay = () => {
-  const {handleAddItem, products} = useShopContext();
+  const { handleAddItem, products } = useShopContext();
 
   return (
     <>
-      {products.map(product => (
+      {products.map((product) => (
         <div
           key={product.id}
           className="bg-white shadow-md p-4 rounded-md flex flex-col justify-between items-center gap-1"
@@ -27,7 +27,10 @@ const ProductDisplay = () => {
               starSpacing="2px"
               starRatedColor="#fbbf24"
             />
-            <button onClick={() => handleAddItem(product)} className="bg-blue-500 text-white hover:bg-blue-600 py-2 px-4 mt-2 rounded-md ">
+            <button
+              onClick={() => handleAddItem(product)}
+              className="bg-blue-500 text-white hover:bg-blue-600 py-2 px-4 mt-2 rounded-md "
+            >
               Add to Cart
             </button>
           </div>
