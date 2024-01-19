@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { useShopContext } from "../../App";
+import { useParams } from "react-router-dom";
 
 const ShopPage = () => {
   const { loading, error, setSelectedCategory, selectedCategory } =
@@ -8,6 +9,14 @@ const ShopPage = () => {
 
   const [selectedCategoryValue, setSelectedCategoryValue] =
     useState(selectedCategory);
+
+    const { category } = useParams();
+
+    useEffect(() => {
+      setSelectedCategory(category);
+      setSelectedCategoryValue(category);
+    }, [category, setSelectedCategory]);
+  
 
   const handleSelectedCategory = (e) => {
     const newValue = e.target.value;

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import fetchData from "../API/Api";
-import { ShopContext } from "../../App";
 
 const HomeCategories = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setError(null);
@@ -15,6 +15,10 @@ const HomeCategories = () => {
       .then((data) => setCategories(data))
       .catch((error) => setError(error));
   }, []);
+
+  const handleCategoryClick = (selectedCategory) => {
+    navigate(`/shop/${selectedCategory}`);
+  };
 
   return (
     <section className="py-28">
@@ -27,19 +31,13 @@ const HomeCategories = () => {
             {categories.map((category, index) => (
               <div
                 key={index}
-                className=" bg-white p-4 shadow-md rounded-md overflow-hidden flex items-center justify-center"
+                className="bg-white p-4 shadow-md rounded-md overflow-hidden flex items-center justify-center"
               >
-                <p className="text-lg font-semibold text-gray-800 mt-2 hover:text-orange-500 transition-colors duration-300 cursor-pointer">
-                  {
-                    <ShopContext.Provider value={category}>
-                    <Link
-                      state={{ selectedCategory: category }}
-                      to={`/shop/${category}`}
-                    >
-                      {category.toUpperCase()}
-                    </Link>
-                    </ShopContext.Provider>
-                  }
+                <p
+                  className="text-lg font-semibold text-gray-800 mt-2 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
+                  onClick={() => handleCategoryClick(category)}
+                >
+                  {category.toUpperCase()}
                 </p>
               </div>
             ))}
