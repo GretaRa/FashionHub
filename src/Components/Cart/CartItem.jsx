@@ -33,11 +33,7 @@ const CartItem = ({ product }) => {
           {product.price.toFixed(2)} €
         </div>
         <div className="col-span-2 flex gap-2">
-          <QuantityButton
-          // quantity={quantity}
-          // onIncrease={handleIncrease}
-          // onDecrease={handleDecrease}
-          />
+          <QuantityButton />
           <button
             className="text-red-600 hover:text-red-800 text-xl"
             onClick={() => handleRemoveItem(product.id)}

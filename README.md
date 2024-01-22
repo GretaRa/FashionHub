@@ -12,3 +12,9 @@ Requirements:
 * Once a user has submitted their order, the amount on the cart itself should adjust accordingly.
 
 * Make sure to test your app thoroughly using the React Testing Library.
+
+TODO
+-Mobile responsiveness
+-Quantity
+-No duplicate items
+-Loading animation

@@ -20,7 +20,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="flex justify-evenly items-center mt-28">
+      <section className="md:flex flex-col md:flex-row justify-evenly items-center mt-28">
         <div className="text-center">
           <h1 className="text-3xl text-gray-800 mb-4">
             Shop the Latest Trends
@@ -35,7 +35,7 @@ const HeroSection = () => {
             Shop Now
           </Link>
         </div>
-        <div>
+        <div className="hidden md:block">
           {loading === false ? (
             <img src={imageurl} alt="Fashion Product" className="max-w-xs" />
           ) : (
