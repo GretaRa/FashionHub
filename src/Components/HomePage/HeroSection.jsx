@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import fetchData from "../API/Api";
+import LoadingSpinner from "../LoadingSpinner";
 
 const HeroSection = () => {
   const [loading, setLoading] = useState(true);
@@ -35,15 +36,16 @@ const HeroSection = () => {
             Shop Now
           </Link>
         </div>
-        <div className="hidden md:block">
-          {loading === false ? (
+        {error ? null :(
+          <div className="hidden md:block">
+          {loading ? (
+            <LoadingSpinner />
+          ) : 
             <img src={imageurl} alt="Fashion Product" className="max-w-xs" />
-          ) : (
-            <div className="flex justify-center items-center h-96">
-              <div className="ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
-            </div>
-          )}
+          }
+           
         </div>
+        )}
       </section>
     </>
   );

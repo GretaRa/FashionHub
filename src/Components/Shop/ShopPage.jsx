@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ProductDisplay from "./ProductDisplay";
 import { useShopContext } from "../../App";
 import { useParams, useNavigate } from "react-router-dom";
+import LoadingSpinner from "../LoadingSpinner";
 
 const ShopPage = () => {
   const { loading, error, setSelectedCategory, selectedCategory } =
@@ -44,8 +45,11 @@ const ShopPage = () => {
             <option value="women's clothing">Women&apos;s Clothing</option>
           </select>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {loading ? <p>Loading...</p> : <ProductDisplay />}
+        <div >
+          {loading ? <LoadingSpinner /> : 
+          (<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <ProductDisplay />
+            </div>)}
           {error && <p>Oops, something went wrong. Please try again later.</p>}
         </div>
       </div>
