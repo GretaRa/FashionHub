@@ -18,3 +18,4 @@ TODO
 -Quantity
 -No duplicate items
 -Loading animation
+-fix scroll

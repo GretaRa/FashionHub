@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import fetchData from "./Components/API/Api";
 import { useEffect } from "react";
+import ScrollToTop from "./Components/ScrollToTop";
 
 export const ShopContext = createContext({
   products: [],
@@ -94,6 +95,7 @@ export default function App() {
         setSelectedCategory,
       }}
     >
+      <ScrollToTop />
       <div>
         <NavigationBar />
         <Outlet />
