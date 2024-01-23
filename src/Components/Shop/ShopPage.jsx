@@ -31,7 +31,7 @@ const ShopPage = () => {
   return (
     <>
       <div className="container mx-auto py-8 min-h-screen flex flex-col">
-        <div className="mb-4">
+        <div className="mb-4 mx-2">
           <label className="text-gray-500">Select Category: </label>
           <select
             value={selectedCategoryValue}

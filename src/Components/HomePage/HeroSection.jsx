@@ -21,7 +21,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="md:flex flex-col md:flex-row justify-evenly items-center mt-28">
+      <section className="md:flex flex-col md:flex-row justify-evenly items-center mt-28 mx-3">
         <div className="text-center">
           <h1 className="text-3xl text-gray-800 mb-4">
             Shop the Latest Trends

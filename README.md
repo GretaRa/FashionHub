@@ -17,4 +17,3 @@ TODO
 -Mobile responsiveness
 -Quantity
 -No duplicate items
--Loading animation

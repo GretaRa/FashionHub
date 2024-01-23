@@ -3,7 +3,7 @@ const ContactUsPage = () => {
     <>
       <div className="container mx-auto py-8 text-center min-h-screen flex flex-col">
         <h1 className="text-2xl font-bold text-gray-800 mb-4">Contact Us</h1>
-        <p className="text-gray-600 mb-4">
+        <p className="text-gray-600 mb-4 mx-2">
           Feel free to reach out with any questions or feedback.
         </p>
         <p className="text-blue-500 hover:underline">
