@@ -14,6 +14,5 @@ Requirements:
 * Make sure to test your app thoroughly using the React Testing Library.
 
 TODO
--Mobile responsiveness
 -Quantity
 -No duplicate items

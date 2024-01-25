@@ -30,7 +30,7 @@ const ShopPage = () => {
 
   return (
     <>
-      <div className="container mx-auto py-8 min-h-screen flex flex-col">
+      <main className="container mx-auto py-8 min-h-screen flex flex-col">
         <div className="mb-4 mx-2">
           <label className="text-gray-500">Select Category: </label>
           <select
@@ -52,7 +52,7 @@ const ShopPage = () => {
             </div>)}
           {error && <p>Oops, something went wrong. Please try again later.</p>}
         </div>
-      </div>
+      </main>
     </>
   );
 };

@@ -4,10 +4,10 @@ import HomeCategories from "./HomeCategories";
 function HomePage() {
   return (
     <>
-      <div className="min-h-screen flex flex-col">
+      <main className="min-h-screen flex flex-col">
         <HeroSection />
         <HomeCategories />
-      </div>
+      </main>
     </>
   );
 }
