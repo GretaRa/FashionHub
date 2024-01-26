@@ -71,7 +71,12 @@ export default function App() {
 
     fetchData(productUrl)
       .then((response) => {
-        setProducts(response);
+        const productsWithQuantity = response.map((product) => ({
+          ...product,
+          quantity: 1, 
+        }));
+        setProducts(productsWithQuantity);
+        console.log('Updated Products:', productsWithQuantity);
       })
       .catch((error) => {
         setError(error);
