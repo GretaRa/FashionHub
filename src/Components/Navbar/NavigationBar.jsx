@@ -5,7 +5,7 @@ import { useShopContext } from "../../App";
 
 const NavigationBar = () => {
   const { cartItems, isCartOpen, handleOpenCart } = useShopContext();
-  const cartItemCount = cartItems.length;
+  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <header className="bg-white p-4 shadow-md">
