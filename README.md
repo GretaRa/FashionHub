@@ -13,6 +13,3 @@ Requirements:
 
 * Make sure to test your app thoroughly using the React Testing Library.
 
-TODO
--Quantity
--No duplicate items
