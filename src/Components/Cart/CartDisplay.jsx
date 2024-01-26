@@ -6,7 +6,7 @@ const CartDisplay = () => {
   const { cartItems, handleCloseCart } = useShopContext();
 
   const CartItemSum = cartItems
-    .map((product) => product.price)
+    .map((product) => product.price * product.quantity)
     .reduce((a, b) => a + b, 0);
 
   return (
