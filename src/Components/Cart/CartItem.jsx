@@ -4,19 +4,6 @@ import { useShopContext } from "../../App";
 
 const CartItem = ({ product }) => {
   const { handleRemoveItem } = useShopContext();
-  // const [quantity, setQuantity] = useState(product.quantity);
-
-  // const handleIncrease = () => {
-  //   setQuantity(quantity + 1);
-  //   // You can also update the cart state or perform other actions
-  // };
-
-  // const handleDecrease = () => {
-  //   if (quantity > 1) {
-  //     setQuantity(quantity - 1);
-  //     // You can also update the cart state or perform other actions
-  //   }
-  // };
 
   return (
     <div className="grid grid-cols-[25%_1fr] gap-5">
@@ -33,7 +20,7 @@ const CartItem = ({ product }) => {
           {product.price.toFixed(2)} €
         </div>
         <div className="col-span-2 flex gap-2">
-          <QuantityButton />
+          <QuantityButton  product={product}  />
           <button
             className="text-red-600 hover:text-red-800 text-xl"
             onClick={() => handleRemoveItem(product.id)}

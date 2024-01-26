@@ -15,6 +15,7 @@ export const ShopContext = createContext({
   handleCloseCart: () => {},
   handleRemoveItem: () => {},
   handleAddItem: () => {},
+  handleDecrease: () => {},
   isCartOpen: false,
   closeCart: () => {},
   loading: false,
@@ -42,7 +43,29 @@ export default function App() {
   };
 
   const handleAddItem = (item) => {
-    setCartItems([...cartItems, item]);
+    const existingItemIndex = cartItems.findIndex(
+      (cartItem) => cartItem.id === item.id,
+    );
+
+    if (existingItemIndex !== -1) {
+      const updatedCartItems = [...cartItems];
+      updatedCartItems[existingItemIndex].quantity < 9
+        ? (updatedCartItems[existingItemIndex].quantity += 1)
+        : null;
+      setCartItems(updatedCartItems);
+    } else {
+      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+    }
+  };
+
+  const handleDecrease = (itemId) => {
+    setCartItems((prevItems) => {
+      return prevItems.map((item) =>
+        item.id === itemId
+          ? { ...item, quantity: Math.max(item.quantity - 1, 1) }
+          : item,
+      );
+    });
   };
 
   const handleCloseCart = () => {
@@ -73,10 +96,9 @@ export default function App() {
       .then((response) => {
         const productsWithQuantity = response.map((product) => ({
           ...product,
-          quantity: 1, 
+          quantity: 1,
         }));
         setProducts(productsWithQuantity);
-        console.log('Updated Products:', productsWithQuantity);
       })
       .catch((error) => {
         setError(error);
@@ -84,22 +106,23 @@ export default function App() {
       .finally(() => setLoading(false));
   }, [productUrl]);
 
+  const contextValues = {
+    category,
+    products,
+    cartItems,
+    handleOpenCart,
+    handleCloseCart,
+    handleAddItem,
+    handleRemoveItem,
+    handleDecrease,
+    isCartOpen,
+    error,
+    loading,
+    setSelectedCategory,
+  };
+
   return (
-    <ShopContext.Provider
-      value={{
-        category,
-        products,
-        cartItems,
-        handleOpenCart,
-        handleCloseCart,
-        handleAddItem,
-        handleRemoveItem,
-        isCartOpen,
-        error,
-        loading,
-        setSelectedCategory,
-      }}
-    >
+    <ShopContext.Provider value={contextValues}>
       <ScrollToTop />
       <div>
         <NavigationBar />
