@@ -1,10 +1,9 @@
 import NavigationBar from "./Components/Navbar/NavigationBar";
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import Footer from "./Components/Footer";
 import { Outlet } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import fetchData from "./Components/API/Api";
-import { useEffect } from "react";
 import ScrollToTop from "./Components/ScrollToTop";
 
 export const ShopContext = createContext({
@@ -56,6 +55,7 @@ export default function App() {
     } else {
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
+    handleOpenCart();
   };
 
   const handleDecrease = (itemId) => {
