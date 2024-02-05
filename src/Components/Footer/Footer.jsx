@@ -12,6 +12,7 @@ const Footer = () => {
             className="text-2xl"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="github"
           >
             <FaGithub />
           </a>

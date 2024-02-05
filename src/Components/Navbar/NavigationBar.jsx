@@ -33,6 +33,7 @@ const NavigationBar = () => {
             <button
               onClick={handleOpenCart}
               className=" text-gray-600 hover:text-gray-800"
+              aria-label="Shopping cart"
             >
               <div className="flex justify-center items-center">
                 <div className="relative ">
