@@ -18,6 +18,7 @@ const CartDisplay = () => {
           <button
             onClick={handleCloseCart}
             className="text-2xl hover:text-gray-800"
+            aria-label="close shopping cart"
           >
             <FaRectangleXmark />
           </button>
