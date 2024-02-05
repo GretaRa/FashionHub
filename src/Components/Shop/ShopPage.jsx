@@ -32,7 +32,7 @@ const ShopPage = () => {
     <>
       <main className="container mx-auto py-8 min-h-screen flex flex-col">
         <div className="mb-4 mx-2">
-          <label for="Select category" className="text-gray-500">Select Category: </label>
+          <label htmlFor="Select category" className="text-gray-500">Select Category: </label>
           <select
             value={selectedCategoryValue}
             onChange={handleSelectedCategory}
