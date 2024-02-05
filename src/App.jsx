@@ -1,8 +1,7 @@
 import NavigationBar from "./Components/Navbar/NavigationBar";
 import { useState, createContext, useContext, useEffect } from "react";
-import Footer from "./Components/Footer";
-import { Outlet } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import Footer from "./Components/Footer/Footer";
+import { Outlet, useParams } from "react-router-dom";
 import fetchData from "./Components/API/Api";
 import ScrollToTop from "./Components/ScrollToTop";
 
